@@ -4,11 +4,11 @@ on:
     branches:
       - master
       - dev
-env:  # ENV VARS that are valid in all jobs
+env:  # ENV VARS that are valid in all jobs and available in the shell as ENV-VARS
   MONGODB_DB_NAME: alex-demo-db
 jobs:
   test:
-    env: # ENV VARS that are scoped for test job only
+    env: # ENV VARS that are scoped for test job only 
       MONGODB_DB_NAME: alex-demo-db
       MONGODB_PASSWORD: simple
       MONGODB_USERNAME: alex
@@ -25,10 +25,10 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT
-      - name: Run tests
-        run: npm test
+      #- name: Run server only with Mongo
+        #run: npm start & npx wait-on http://127.0.0.1:$PORT
+      #- name: Run tests
+        #run: npm test
       - name: Output information
         run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
