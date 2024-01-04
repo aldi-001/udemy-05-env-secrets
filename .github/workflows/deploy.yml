@@ -8,6 +8,7 @@ env:  # ENV VARS that are valid in all jobs and available in the shell as ENV-VA
   MONGODB_DB_NAME: alex-demo-db
 jobs:
   test:
+    environment: testing
     env: # ENV VARS that are scoped for test job only 
       MONGODB_DB_NAME: alex-demo-db
       #MONGODB_PASSWORD: simple
@@ -15,7 +16,6 @@ jobs:
       MONGODB_PASSWORD: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_USERNAME: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
