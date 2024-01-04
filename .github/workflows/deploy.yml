@@ -12,6 +12,7 @@ jobs:
       MONGODB_DB_NAME: alex-demo-db
       MONGODB_PASSWORD: simple
       MONGODB_USERNAME: alex
+      PORT: 8080
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PO
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test
       - name: Output information
