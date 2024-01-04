@@ -2,7 +2,7 @@ name: Deployment
 on:
   push:
     branches:
-      - main
+      - master
       - dev
 env:  # ENV VARS that are valid in all jobs
   MONGODB_DB_NAME: alex-demo-db
